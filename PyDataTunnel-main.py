@@ -17,7 +17,15 @@ cloudflare_process = None
 selected_directory = os.path.expanduser("~")  # Carpeta inicial (Usuario actual)
 tunnel_url = ""
 
-ICON_PATH = "icono.ico"
+# Detectar la ubicación del ejecutable o script
+if getattr(sys, 'frozen', False):
+    # Si está en modo ejecutable (PyInstaller)
+    base_path = sys._MEIPASS
+else:
+    # Si está en modo script (Python normal)
+    base_path = os.path.dirname(os.path.abspath(__file__))
+
+ICON_PATH = os.path.join(base_path, "icono.ico")
 
 # Detectar la ubicación del ejecutable en tiempo de ejecución
 if getattr(sys, 'frozen', False):
@@ -164,7 +172,7 @@ def download_cloudflared_thread():
         messagebox.showerror("Error", f"No se pudo descargar Cloudflare Tunnel: {str(e)}")
 
 def start_server():
-    """Inicia el servidor HTTP usando subprocess.Popen con un manejador de registros de accesos."""
+    """Inicia el servidor HTTP sin abrir una consola."""
     global server_process
 
     if server_process:
@@ -179,8 +187,14 @@ def start_server():
     log_message("Iniciando servidor HTTP...")
 
     try:
-        # Inicia el servidor con el CustomHandler para registrar accesos
-        server_process = subprocess.Popen(["python", "-m", "http.server", "9876", "--bind", "0.0.0.0"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        # ✅ Se añade `creationflags=subprocess.CREATE_NO_WINDOW` para evitar que se abra la consola
+        server_process = subprocess.Popen(
+            ["python", "-m", "http.server", "9876", "--bind", "0.0.0.0"],
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.PIPE, 
+            text=True,
+            creationflags=subprocess.CREATE_NO_WINDOW  # 🚀 Evita la consola emergente
+        )
 
         log_message("Servidor HTTP iniciado en el puerto 9876.")
 
@@ -194,6 +208,7 @@ def start_server():
     except Exception as e:
         log_message(f"Error al iniciar el servidor HTTP: {str(e)}")
         messagebox.showerror("Error", f"No se pudo iniciar el servidor HTTP: {str(e)}")
+
 
 
 
