@@ -99,6 +99,12 @@ Para seguir mejorando la seguridad y funcionalidad de PyDataTunnel, tengo implem
 
 ---
 
+⚠️ IMPORTANTE
+
+❗ Este servidor HTTP de Python tiene vulnerabilidades conocidas como Directory Traversal o Cross-site Scripting (XSS) que al ser un servidor simple de HTTP son normales. Se recomienda usarlo solo con personas de confianza y no exponerlo en redes públicas sin medidas adicionales de seguridad. Que por mucho cifrado SSL que nos de Cloudflare solo sirve para que la información viaje encriptada
+
+---
+
 **¡Abierto a cualquier ayuda y commentario!**
 
 ---
