@@ -4,13 +4,15 @@
   <img src="https://i.imgur.com/Fxp6szx.png" alt="PyDataTunnel" width="500">
 </div>
 
-
-
 👀 ¿Alguna vez has necesitado compartir un archivo con alguien rápidamente? Ya sea con un amigo, un compañero de trabajo, un profesor o un familiar, a veces enviar un archivo por correo o subirlo a la nube puede ser lento, incómodo y tardío, además de que tu archivo se puede quedar en la nube de un proveedor tercero.
 
 Con **PyDataTunnel**, compartir archivos nunca ha sido tan fácil. Este programa te permite **crear un servidor HTTP local** y, con la ayuda de **Cloudflare Tunnel** completamente cifrado con la última tecnología de Cloduflare, generar un enlace público accesible desde cualquier parte del mundo, sin necesidad de abrir puertos ni realizar configuraciones complicadas.
 
 ---
+<div align="center">
+  <img src="https://i.imgur.com/1lXtgDL.png" alt="PyDataTunnel" width="45%">
+  <img src="https://i.imgur.com/DFTrwlt.png" alt="PyDataTunnel" width="45%">
+</div>
 
 ## 🔹 **¿Cómo funciona?**
 
